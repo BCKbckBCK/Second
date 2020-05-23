@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.monster{
+    width: 110px;
+    height: 100px;
+    border-radius: 20px;
+    background-color: blue;
+    margin: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+position: relative;
+    animation: jumping 0.8s infinite  alternate;
+
+}
+.monster::before,
+.monster::after{
+    content: "";
+    display: block;
+    height: 10px;
+    width: 20%;
+    border-radius: 10px;
+    background-color: white;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+
+}
+.monster::before{
+    transform: translateX(-70%)rotate(45deg);
+}
+.monster::after{
+    transform: translateX(-30%)rotate(-45deg);
+
+}
+
+.monster .eye{
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background-color: white;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.monster .eye .eyeBall{
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-color:aqua;
+    animation: zyj 1.6s infinite alternate;
+}
+.monster .mouth{
+    width: 32%;
+    height: 12px;
+    border-radius: 12px;
+    background-color: white;
+}
+.ball{
+    animation-delay: 0.5s;
+    background-color: chartreuse;
+}
+.ball.monster .eyeBall{
+    background-color: black;
+
+}
+.ball .mouth{
+    background-color: black;
+
+}
+@keyframes  jumping {
+    50%{
+        top:0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    100%{
+        top:-50px;
+        box-shadow: 0 50px 20px rgba(0,0,0,0.2);
+    }
+
+}
+@keyframes zyj {
+    0%,
+    10%{
+        transform: translateX(50%);
+    }
+    90%,
+    100%{
+      transform: translateX(-50%);
+    }
+
+}
+.pageloading{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ;
+}
+.pageloading .monster{
+    margin-bottom: 50px;
+}
+.pageloading .loading{
+    background-color: white;
+    height: 8px;
+    width: 200px;
+    border-radius: 5px;
+    overflow: hidden;
+
+}
+.pageloading .loading .bar{
+    background-color: red;
+    height: 8px;
+    width: 0%;
+
+}
+.pageloading.completed{
+   opacity: 0;
+
+}
+.pageloading.completed .monster{
+    transition: 0.5s;
+    transform: scale(0.1) rotateZ(360deg);
+}
